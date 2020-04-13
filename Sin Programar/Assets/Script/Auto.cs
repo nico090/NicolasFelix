@@ -9,6 +9,7 @@ public class Auto : MonoBehaviour
     public float fzarotacion;
     public bool adelante;
     public bool atras;
+    public float speed;
     
     // Start is called before the first frame update
     void Start()
@@ -22,50 +23,53 @@ public class Auto : MonoBehaviour
     {
         InputMovimiento();
     }
-
+  
     void InputMovimiento()
     {
 
         if (Input.GetKey(KeyCode.D))
         {
 
-
-            transform.localRotation = new Quaternion(transform.rotation.x, transform.rotation.y + fzarotacion, transform.rotation.z, transform.rotation.w);
+            transform.Rotate(Vector3.up, fzarotacion * Time.deltaTime);
 
 
 
         }
 
-
-
-
-
-
-    }
-
-
-
-
-    public void MovimientoAuto(int index)
-    {
-        switch (index)
+        if (Input.GetKey(KeyCode.A))
         {
-            case 0:
 
-                
-
-
-                break;
+            transform.Rotate(Vector3.up, -fzarotacion * Time.deltaTime);
 
 
-            case 1:
-               
 
-                break;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+
+
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+
 
         }
 
 
+        if (Input.GetKey(KeyCode.S))
+        {
+
+
+            transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+
+
+        }
+
 
     }
+
+
+
+
+   
 }
