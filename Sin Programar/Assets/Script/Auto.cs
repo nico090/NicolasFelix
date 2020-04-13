@@ -29,8 +29,16 @@ public class Auto : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+            if (adelante)
+            {
 
-            transform.Rotate(Vector3.up, fzarotacion * Time.deltaTime);
+                transform.Rotate(Vector3.up, fzarotacion * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up, -fzarotacion * Time.deltaTime);
+            }
+            
 
 
 
@@ -38,8 +46,16 @@ public class Auto : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
+            if (adelante)
+            {
+                transform.Rotate(Vector3.up, -fzarotacion * Time.deltaTime);
 
-            transform.Rotate(Vector3.up, -fzarotacion * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up, fzarotacion * Time.deltaTime);
+            }
+         
 
 
 
@@ -47,16 +63,26 @@ public class Auto : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
+           
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
+                adelante = true;
+         
 
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+          
 
 
 
         }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+
+            adelante = false;
+
+        }
 
 
-        if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
         {
 
 
